@@ -9,7 +9,7 @@
 
 .login {
   background-color: #EAEAEC;
-  width: 600px;
+  width: 37.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,14 +46,14 @@ form h1 {
   margin-bottom: 1rem;
   height: 2.188rem;
   border-radius: 0.25rem;
-  border: 2px solid var(--border-color);
+  border: 0.125rem solid var(--border-color);
   padding: 0.625rem;
   font-size: 0.938rem;
 }
 
 form button {
   height: 2.188rem;
-  border: 1px solid var(--border-color);
+  border: 0.063rem solid var(--border-color);
   border-radius: 0.25rem;
   background-color: var(--button-primary);
   color: var(--text-white);
