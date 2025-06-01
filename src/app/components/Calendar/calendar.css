@@ -1,0 +1,91 @@
+.filters {
+  display: flex;
+  gap: 0.9375rem;
+  margin: 0 auto;
+  padding: 0.9375rem 1.5625rem;
+  background: var(--background-secondary);
+  border-radius: 0.625rem;
+  box-shadow: 0 0.25rem 0.375rem var(--shadow);
+  max-width: fit-content;
+}
+
+.date-inputs {
+  display: flex;
+  align-items: center;
+  gap: 0.9375rem;
+}
+
+.filters label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.filters input {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  border: 0.0625rem solid var(--border-color);
+  border-radius: 0.375rem;
+  outline: none;
+  transition: 0.3s;
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+}
+
+.filters input:hover {
+  border-color: var(--border-color);
+}
+
+.filters input:focus {
+  border-color: (--border-color);
+  box-shadow: 0 0 0.3125rem (--shadow);
+}
+
+/* Botão de filtro */
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-white);
+  background: var(--background-button-action);
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: 0.3s;
+  height: 2.3125rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3125rem;
+}
+
+.filter-btn:hover {
+  background: var(--background-button-action-hover);
+  transform: scale(1.02);
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+}
+
+.clear-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--button-action-close);
+  color: var(--text-white);
+  border: 0;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clear-btn:hover {
+  background-color: var(--button-action-close-hover);
+  transform: scale(1.02);
+}
