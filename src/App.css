@@ -1,0 +1,93 @@
+/* Light Theme (default) */
+:root {
+    --background-primary: #f8f9fa;
+    --background-secondary: #ffffff;
+    --background-login: #181c2e;
+    --background-login-area: #524949;
+    --background-button-action: #007bff;
+    --background-button-action-hover: #376392;
+    --text-primary: #333333;
+    --text-white: #FFF;
+    --text-secondary: #666666;
+    --border-color: #0e27b9;
+    --border-color-dashboard: #0e27b9;
+    --card-background: #ffffff;
+    --header-background: #ffffff;
+    --input-background: #ffffff;
+    --input-text: #333333;
+    --input-placeholder: #999999;
+    --button-primary: #0c70db;
+    --button-hover: #1b4c81;
+    --button-secondary: #6c757d;
+    --button-action: #1de057;
+    --button-action-hover: #0b9c3f;
+    --button-action-close: #ff0000;
+    --button-action-close-hover: #9c3232;
+    --shadow: rgba(0, 0, 0, 0.1);
+
+    --status-open: #2ecc71;
+    --status-progress: #f1c40f;
+    --status-close: #3498db;
+}
+
+/* Dark Theme */
+[data-theme='dark'] {
+    --background-primary: #1a1a1a;
+    --background-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --border-color: #404040;
+    --card-background: #2d2d2d;
+    --header-background: #2d2d2d;
+    --input-background: #333333;
+    --input-text: #ffffff;
+    --input-placeholder: #888888;
+    --button-primary: #0056b3;
+    --button-hover: #003d82;
+    --shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Transições suaves */
+* {
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+} 
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root{
+  height: 100%;
+}
+
+body{
+  font: 14px;
+  font-family: sans-serif;
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+}
+
+a{
+  text-decoration: none;
+}
+
+ul{
+  list-style: none;
+}
+
+button{
+  cursor: pointer;
+}
+
+input, select, textarea {
+  background-color: var(--input-background);
+  color: var(--input-text);
+  border-color: var(--border-color);
+}
+
+.card {
+  background-color: var(--card-background);
+  box-shadow: 0 0 10px var(--shadow);
+}
