@@ -58,6 +58,11 @@ export default function Header() {
                     <FiHome color="#fff" size={24} />
                     Dashboard
                 </Link>
+
+                <Link to="/" onClick={logout}>
+                    <FiLogOut color="#fff" size={24} />
+                    Sair
+                </Link>
             </div>
         </div>
     );
