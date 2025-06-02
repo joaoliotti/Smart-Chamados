@@ -4,8 +4,8 @@ import { db } from "../../../services/firebaseConnection";
 import Header from "../../components/Header/Header";
 import DateFilter from "../../components/Calendar/Calendar";
 import Title from "../../components/Title/Title";
-import { FiHome, FiUsers, FiFileText, FiCheckCircle, FiClock, FiTrendingUp } from "react-icons/fi";
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { FiHome, FiUsers, FiFileText, FiCheckCircle, FiClock, FiTrendingUp, FiMapPin } from "react-icons/fi";
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts";
 import "./Dashboard.css";
 
 function formatarData(dataFirebase) {
@@ -33,6 +33,9 @@ export default function Dashboard() {
   const [chamadosAtendidos, setChamadosAtendidos] = useState(0);
   const [totalClientes, setTotalClientes] = useState(0);
   const [dadosGrafico, setDadosGrafico] = useState([]);
+  const [cityRanking, setCityRanking] = useState([]);
+  const [stateRanking, setStateRanking] = useState([]);
+  const [rankingLimit, setRankingLimit] = useState(3);
 
   const [dataInicio, setDataInicio] = useState("");
   const [dataFim, setDataFim] = useState("");
@@ -57,6 +60,7 @@ export default function Dashboard() {
     const chamadosSnapshot = await getDocs(q);
     const clientesSnapshot = await getDocs(clientesRef);
 
+    // Process chamados data
     let abertos = 0;
     let emProgresso = 0;
     let atendidos = 0;
@@ -83,12 +87,39 @@ export default function Dashboard() {
       }
     });
 
+    // Process city and state rankings
+    const cityCount = {};
+    const stateCount = {};
+
+    clientesSnapshot.forEach((doc) => {
+      const { city, state } = doc.data();
+      if (city) {
+        cityCount[city] = (cityCount[city] || 0) + 1;
+      }
+      if (state) {
+        stateCount[state] = (stateCount[state] || 0) + 1;
+      }
+    });
+
+    // Convert to arrays and sort
+    const cityRankingData = Object.entries(cityCount)
+      .map(([name, count]) => ({ name, count }))
+      .sort((a, b) => b.count - a.count)
+      .slice(0, rankingLimit);
+
+    const stateRankingData = Object.entries(stateCount)
+      .map(([name, count]) => ({ name, count }))
+      .sort((a, b) => b.count - a.count)
+      .slice(0, rankingLimit);
+
     setTotalChamados(chamadosSnapshot.size);
     setChamadosAbertos(abertos);
     setChamadosProgresso(emProgresso);
     setChamadosAtendidos(atendidos);
     setTotalClientes(clientesSnapshot.size);
     setDadosGrafico(Object.values(dataMap));
+    setCityRanking(cityRankingData);
+    setStateRanking(stateRankingData);
   }
 
   return (
@@ -143,8 +174,68 @@ export default function Dashboard() {
             </div>
           </div>
 
+          <div className="ranking-controls">
+            <h2>Ranking de Cidades e Estados</h2>
+            <div className="ranking-buttons">
+              <button 
+                className={rankingLimit === 3 ? 'active' : ''} 
+                onClick={() => setRankingLimit(3)}>
+                Top 3
+              </button>
+              <button 
+                className={rankingLimit === 10 ? 'active' : ''} 
+                onClick={() => setRankingLimit(10)}>
+                Top 10
+              </button>
+              <button 
+                className={rankingLimit === 999 ? 'active' : ''} 
+                onClick={() => setRankingLimit(999)}>
+                Todos
+              </button>
+            </div>
+          </div>
+          <div className="charts-container">
+            <div className="dashboard-chart">
+              <h2>Ranking de Cidades</h2>
+              <ResponsiveContainer width="100%" height={400}>
+                <BarChart data={cityRanking} layout="vertical" margin={{ left: 120, right: 20, top: 10, bottom: 10 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#444" />
+                  <YAxis 
+                    dataKey="name" 
+                    type="category" 
+                    stroke="black"
+                    width={110}
+                    style={{ fontSize: '12px' }}
+                  />
+                  <XAxis type="number" stroke="black" allowDecimals={false}/>
+                  <Tooltip />
+                  <Bar dataKey="count" fill="#00BFFF" name="Clientes" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+
+            <div className="dashboard-chart">
+              <h2>Ranking de Estados</h2>
+              <ResponsiveContainer width="100%" height={400}>
+                <BarChart data={stateRanking} layout="vertical" margin={{ left: 50, right: 20, top: 10, bottom: 10 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#444" />
+                  <YAxis 
+                    dataKey="name" 
+                    type="category" 
+                    stroke="black"
+                    width={40}
+                    style={{ fontSize: '12px' }}
+                  />
+                  <XAxis type="number" stroke="black" allowDecimals={false}/>
+                  <Tooltip />
+                  <Bar dataKey="count" fill="#32CD32" name="Clientes" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+
           <div className="dashboard-chart">
-            <h2>Gráfico Chamados</h2>
+            <h2>Histórico de Chamados</h2>
             <ResponsiveContainer width="100%" height={300}>
               <AreaChart data={dadosGrafico}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#444" />
