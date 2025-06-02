@@ -25,9 +25,9 @@
     --button-action-close-hover: #9c3232;
     --shadow: rgba(0, 0, 0, 0.1);
 
-    --status-open: #2ecc71;
+    --status-open: #3498db;
+    --status-close: #2ecc71;
     --status-progress: #f1c40f;
-    --status-close: #3498db;
 }
 
 /* Dark Theme */

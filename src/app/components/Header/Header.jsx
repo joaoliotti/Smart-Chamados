@@ -59,6 +59,11 @@ export default function Header() {
                     Dashboard
                 </Link>
 
+                <Link to="/Chamados">
+                    <FiMessageSquare color="#fff" size={24} />
+                    Chamados
+                </Link>
+
                 <Link to="/" onClick={logout}>
                     <FiLogOut color="#fff" size={24} />
                     Sair

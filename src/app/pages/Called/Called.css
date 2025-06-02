@@ -1,0 +1,254 @@
+.new {
+  float: right;
+  margin-bottom: 1.5rem;
+  background-color: var(--button-primary);
+  color: var(--text-white);
+  padding: 0.5rem;
+  border-radius: 0.3125rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  font-weight: 600;
+  transition: ease-in-out 0.3s;
+}
+
+.new svg {
+  margin-right: 0.3125rem;
+}
+
+.new:hover {
+  background-color: var(--button-hover);
+  transform: scale(1.1);
+}
+
+.called {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+table {
+  border: 0.1625rem solid var(--border-color);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background-color: var(--background-secondary);
+}
+
+table caption {
+  font-size: 1.5rem;
+  margin: 0.5rem 0 0.75rem;
+}
+
+table tr {
+  background-color: var(--background-secondary);
+  border: 0.1625rem solid var(--border-color);
+  padding: 0.35rem;
+}
+
+table th,
+table td {
+  padding: 0.625rem;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+table th {
+  font-size: 0.85rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+table td .action {
+  border: 0;
+  padding: 0.3125rem;
+  margin-right: 0.125rem;
+  align-items: center;
+  display: inline-block;
+  border-radius: 0.25rem;
+}
+
+table td .action svg {
+  vertical-align: middle;
+}
+
+table td .badge {
+  padding: 0.3125rem;
+  border-radius: 0.1875rem;
+  color: var(--text-white);
+}
+
+.called span {
+  margin: 2rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.btn-more {
+  margin: 1.5rem 0;
+  padding: 0.5rem 1rem;
+  height: 2.1875rem;
+  border: 0;
+  border-radius: 0.3125rem;
+  background-color: var(--button-primary);
+  font-size: 1.1rem;
+}
+
+.btn-more:hover {
+  background-color: var(--button-hover);
+  transform: scale(1.01);
+}
+
+@media screen and (max-width: 37.5rem) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3rem;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 0.0625rem;
+    margin: -0.0625rem;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 0.0625rem;
+  }
+
+  table tr {
+    border-bottom: 0.1875rem solid var(--border-color);
+    display: block;
+    margin-bottom: 0.65rem;
+  }
+
+  table td {
+    border-bottom: 0.0625rem solid var(--border-color);
+    display: block;
+    font-size: 0.8rem;
+    text-align: right;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+.content {
+  margin-left: 12.5rem;
+  padding: 0.0625rem 1rem;
+}
+
+.container {
+  display: flex;
+  background-color: var(--background-secondary);
+  border-radius: 0.3125rem;
+  padding: 0.8rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.label-avatar {
+  width: 17.5rem;
+  height: 17.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.label-avatar input {
+  display: none;
+}
+
+.label-avatar span {
+  z-index: 99;
+  position: absolute;
+  opacity: 0.7;
+  transition: all 0.5s;
+}
+
+.label-avatar span:hover {
+  opacity: 1;
+  transform: scale(1.4);
+}
+
+.form-profile img {
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.form-profile label {
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  color: var(--text-primary);
+}
+
+.form-profile input,
+.form-profile textarea,
+.form-profile select {
+  margin-bottom: 1rem;
+  padding: 0.7rem;
+  border: 0;
+  border-radius: 0.3125rem;
+  max-width: 37.5rem;
+  background-color: var(--input-background);
+  color: var(--input-text);
+  border: 0.0625rem solid var(--border-color);
+}
+
+.form-profile input:disabled {
+  cursor: not-allowed;
+  background-color: var(--background-secondary);
+  color: var(--text-secondary);
+}
+
+.form-profile button {
+  max-width: 37.5rem;
+}
+
+.container.called {
+  display: flex;
+  background-color: var(--background-secondary);
+  border-radius: 0.3125rem;
+  padding: 0.8rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.status span {
+  padding: 0.3125rem;
+  border-radius: 0.3125rem;
+}
+
+
+
+.status-badge {
+  margin-left: 1rem;
+  border-radius: 0.125rem;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
